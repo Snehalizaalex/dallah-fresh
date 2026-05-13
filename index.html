@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DALLAH FRESH — Oman's premier fresh produce importing company. Premium fruits and vegetables sourced globally, delivered locally to hotels, restaurants, institutions, and retailers.">
+  <meta name="keywords" content="fresh produce, Oman, fruits, vegetables, import, wholesale, hotels, restaurants, DALLAH FRESH">
+  <title>DALLAH FRESH — Freshness Delivered. Globally Sourced. Locally Trusted.</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>🍃</text></svg>">
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-fruit">🍊</div>
+    </div>
+  </div>
+
+  <!-- Mobile Overlay -->
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <img src="logob2.png" alt="Dallah Fresh Logo" class="brand-logo">
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="operations.html">Operations</a>
+        <a href="infrastructure.html">Infrastructure</a>
+        <a href="contact.html" class="nav-cta">Contact Us</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section — Image Sequence Scroll Animation -->
+  <section class="hero-sequence" id="hero-sequence">
+    <div class="hero-sequence-sticky">
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-text-overlay">
+        <div class="hero-text-part" id="text-part-1">
+          <span class="hero-tag accent-red">Premium Quality</span>
+          <h1 class="hero-title">Delivered <br><span class="accent-orange">With Care</span></h1>
+          <p class="hero-desc">Sourced from the world's best farms, brought straight to your doorstep.</p>
+        </div>
+        <div class="hero-text-part" id="text-part-2">
+          <span class="hero-tag accent-orange">Always Fresh</span>
+          <h1 class="hero-title">Freshly <br><span class="accent-orange">For You.</span></h1>
+          <p class="hero-desc">Oman's leading fresh produce partner since 1985.</p>
+          <div class="hero-actions">
+            <a href="about.html" class="btn btn-outline">Our Story</a>
+            <a href="contact.html" class="btn btn-outline">Contact Us</a>
+          </div>
+        </div>
+      </div>
+      <!-- Scroll hint -->
+      <div class="hero-scroll-hint">
+        <span>Scroll to Explore</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section" id="stats" style="padding: 60px 0;">
+    <div class="container">
+      <div class="stats-row reveal">
+        <div class="stat-item">
+          <div class="stat-number" data-target="40">0</div>
+          <div class="stat-label">Years of Excellence</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="22">0</div>
+          <div class="stat-label">Refrigerated Vehicles</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="5">0</div>
+          <div class="stat-label">Locations Nationwide</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="500">0<span class="suffix">+</span></div>
+          <div class="stat-label">Clients Served</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who We Are -->
+  <section class="section section-vibrant-green" id="who-we-are">
+    <div class="container">
+      <div class="split-section">
+        <div class="split-image reveal-scale">
+          <img src="images/hero-produce.png" alt="Fresh premium produce arranged beautifully" class="alive-img" loading="lazy">
+        </div>
+        <div class="split-text reveal-right">
+          <span class="label">Who We Are</span>
+          <h2>Oman's Leading Fresh Produce Partner</h2>
+
+          <a href="about.html" class="btn btn-secondary" style="margin-top: 12px;">Learn More About Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Services -->
+  <section class="section section-vibrant-orange" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">What We Do</span>
+        <h2>Our Premium Services</h2>
+        <p>From farm to table, we handle every step of the fresh produce supply chain with precision and care.</p>
+      </div>
+      <div class="cards-grid">
+        <div class="card card-lime reveal delay-1">
+          <h3>Global Sourcing</h3>
+          <p>We source premium produce from the world's best agricultural regions.</p>
+        </div>
+        <div class="card card-lime reveal delay-2">
+          <h3>Custom Processing</h3>
+          <p>Cleaning, sorting, and packaging tailored to your specific requirements.</p>
+        </div>
+        <div class="card card-lime reveal delay-3">
+          <h3>Cold Chain Logistics</h3>
+          <p>End-to-end temperature-controlled delivery preserving freshness.</p>
+        </div>
+        <div class="card card-lime reveal delay-4">
+          <h3>Retail Supply</h3>
+          <p>Consistent, high-quality supply for retail chains and supermarkets.</p>
+        </div>
+        <div class="card card-lime reveal delay-5">
+          <h3>Quality Assured</h3>
+          <p>ISO 22000:2018 and HACCP certified for the highest food safety.</p>
+        </div>
+        <div class="card card-lime reveal delay-6">
+          <h3>Reliable Partner</h3>
+          <p>40 years of building trust with Oman's finest businesses., catering companies, and institutional clients.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Global Sourcing -->
+  <section class="section section-dark" id="sourcing">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Global Reach</span>
+        <h2>Sourced From the World's Best Farms</h2>
+        <p>We partner with premium agricultural regions worldwide to bring you the freshest produce year-round.</p>
+      </div>
+      <div class="countries-grid reveal">
+        <div class="country-card">
+          <img src="https://flagcdn.com/w160/in.png" alt="India Flag" class="country-flag">
+          <h4>India</h4>
+        </div>
+        <div class="country-card">
+          <img src="https://flagcdn.com/w160/ae.png" alt="UAE Flag" class="country-flag">
+          <h4>UAE</h4>
+        </div>
+        <div class="country-card">
+          <img src="https://flagcdn.com/w160/es.png" alt="Spain Flag" class="country-flag">
+          <h4>Spain</h4>
+        </div>
+        <div class="country-card">
+          <img src="https://flagcdn.com/w160/nl.png" alt="Netherlands Flag" class="country-flag">
+          <h4>Netherlands</h4>
+        </div>
+        <div class="country-card">
+          <img src="https://flagcdn.com/w160/za.png" alt="South Africa Flag" class="country-flag">
+          <h4>South Africa</h4>
+        </div>
+        <div class="country-card">
+          <img src="https://flagcdn.com/w160/tr.png" alt="Turkey Flag" class="country-flag">
+          <h4>Turkey</h4>
+        </div>
+        <div class="country-card">
+          <img src="https://flagcdn.com/w160/eg.png" alt="Egypt Flag" class="country-flag">
+          <h4>Egypt</h4>
+        </div>
+        <div class="country-card">
+          <img src="https://flagcdn.com/w160/cn.png" alt="China Flag" class="country-flag">
+          <h4>China</h4>
+        </div>
+        <div class="country-card">
+          <img src="https://flagcdn.com/w160/th.png" alt="Thailand Flag" class="country-flag">
+          <h4>Thailand</h4>
+        </div>
+        <div class="country-card">
+          <img src="https://flagcdn.com/w160/om.png" alt="Oman Flag" class="country-flag">
+          <h4>Oman (Local)</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients We Serve -->
+  <section class="section section-vibrant-red" id="clients">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Our Clients</span>
+        <h2>Trusted By Oman's Finest</h2>
+        <p>We proudly serve a diverse portfolio of clients across multiple industries.</p>
+      </div>
+      <div class="clients-slider">
+        <div class="clients-track">
+          <div class="client-card">
+            <h4>Hotels & Restaurants</h4>
+            <p>Premium produce for Oman's finest hospitality venues.</p>
+          </div>
+          <div class="client-card">
+            <h4>Catering Services</h4>
+            <p>Reliable bulk supply for large-scale catering operations.</p>
+          </div>
+          <div class="client-card">
+            <h4>Government & Institutions</h4>
+            <p>Trusted supplier to government bodies and institutions.</p>
+          </div>
+          <div class="client-card">
+            <h4>Retailers</h4>
+            <p>Consistent quality supply for retail chains and supermarkets.</p>
+          </div>
+          <div class="client-card">
+            <h4>Online Platforms</h4>
+            <p>Supporting e-commerce grocery and delivery platforms.</p>
+          </div>
+          <div class="client-card">
+            <h4>Ship Chandlers</h4>
+            <p>Supplying fresh produce to ships and maritime operations.</p>
+          </div>
+          <!-- Duplicate items for seamless loop -->
+          <div class="client-card">
+            <h4>Hotels & Restaurants</h4>
+            <p>Premium produce for Oman's finest hospitality venues.</p>
+          </div>
+          <div class="client-card">
+            <h4>Catering Services</h4>
+            <p>Reliable bulk supply for large-scale catering operations.</p>
+          </div>
+          <div class="client-card">
+            <h4>Government & Institutions</h4>
+            <p>Trusted supplier to government bodies and institutions.</p>
+          </div>
+          <div class="client-card">
+            <h4>Retailers</h4>
+            <p>Consistent quality supply for retail chains and supermarkets.</p>
+          </div>
+          <div class="client-card">
+            <h4>Online Platforms</h4>
+            <p>Supporting e-commerce grocery and delivery platforms.</p>
+          </div>
+          <div class="client-card">
+            <h4>Ship Chandlers</h4>
+            <p>Supplying fresh produce to ships and maritime operations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality & Certifications -->
+  <section class="section section-vibrant-green" id="quality">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Quality Promise</span>
+        <h2>Certified for Excellence</h2>
+        <p>Our commitment to food safety and quality is backed by internationally recognized certifications.</p>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-card reveal delay-1">
+          <h3>ISO 22000:2018</h3>
+          <p>Certified food safety management system ensuring the highest international standards throughout our operations.</p>
+        </div>
+        <div class="cert-card reveal delay-2">
+          <h3>HACCP Certified</h3>
+          <p>Hazard Analysis Critical Control Point certification ensuring systematic food safety at every stage.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="reveal">Ready to Partner With Oman's Freshest?</h2>
+      <p class="reveal delay-1">Join hundreds of businesses who trust DALLAH FRESH for their premium produce needs.</p>
+      <a href="contact.html" class="btn btn-secondary reveal delay-2">Partner With Us →</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">DALLAH <span>FRESH</span></div>
+          <p class="footer-desc">Oman's premier fresh produce importing company. Delivering quality, freshness, and trust since 1985.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">📘</a>
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="LinkedIn">💼</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="operations.html">Operations</a></li>
+            <li><a href="infrastructure.html">Infrastructure</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="operations.html">Global Sourcing</a></li>
+            <li><a href="operations.html">Import & Processing</a></li>
+            <li><a href="infrastructure.html">Cold Chain Logistics</a></li>
+            <li><a href="operations.html">Quality Assurance</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📍</span>
+            <span>Salalah, Oman (Head Office)</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📞</span>
+            <span>+968 2345 6789</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">✉️</span>
+            <span>info@dallahfresh.com</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 DALLAH FRESH. All Rights Reserved.</span>
+        <span>Designed with 🍃 in Oman</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

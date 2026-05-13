@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DALLAH FRESH Operations — Our end-to-end process from global sourcing, importing, processing, packaging, distribution to retail. Quality assurance and year-round availability.">
+  <title>Operations — DALLAH FRESH</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── Pistachio Theme for Operations Page ── */
+    :root {
+      --pistachio: #93C572;
+      --pistachio-dark: #6a9e4f;
+      --pistachio-light: #c8e6b0;
+      --pistachio-pale: #eef7e8;
+    }
+    body { background-color: #f0f7eb; }
+    .page-hero { background: linear-gradient(135deg, #6a9e4f 0%, #93C572 50%, #b5d99c 100%); }
+    .page-hero-content h1 { color: #fff; }
+    .page-hero-content p { color: rgba(255,255,255,0.9); }
+    .page-hero .breadcrumb { color: rgba(255,255,255,0.75); }
+    .page-hero .breadcrumb a { color: #fff; }
+    .section-vibrant-green { background: var(--pistachio-pale); }
+    .section-alt { background: #e4f2da; }
+    .section-vibrant-orange { background: var(--pistachio-pale); }
+    .section-vibrant-red { background: #e4f2da; }
+    .label { background: var(--pistachio-light) !important; color: var(--pistachio-dark) !important; }
+    .card { background: #fff; border-color: var(--pistachio-light); }
+    .card::before { background: linear-gradient(90deg, var(--pistachio), var(--pistachio-dark)); }
+    .cert-card { background: #fff; border-left: 4px solid var(--pistachio); }
+    .process-step-icon { background: var(--pistachio-light); }
+    .process-arrow { color: var(--pistachio-dark); }
+    .cta-section { background: linear-gradient(135deg, #6a9e4f, #93C572); }
+    .stat-number { color: var(--pistachio-dark); }
+    .card h3 { color: var(--pistachio-dark); }
+    h2 { color: #3a5a2a; }
+    .btn-secondary { background: linear-gradient(135deg, var(--pistachio-dark), #4a7a32) !important; }
+  </style>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>🍃</text></svg>">
+</head>
+<body>
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-content">
+      <div class="loader-fruit">🥕</div>
+    </div>
+  </div>
+
+  <!-- Mobile Overlay -->
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <img src="logob2.png" alt="Dallah Fresh Logo" class="brand-logo">
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="operations.html" class="active">Operations</a>
+        <a href="infrastructure.html">Infrastructure</a>
+        <a href="contact.html" class="nav-cta">Contact Us</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> / <span>Operations</span>
+      </div>
+      <h1>Our Operations</h1>
+      <p>A seamless end-to-end supply chain ensuring the freshest produce reaches your doorstep.</p>
+    </div>
+  </section>
+
+  <!-- Process Flow -->
+  <section class="section section-vibrant-green" id="process">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Our Process</span>
+        <h2>From Farm to Your Table</h2>
+        <p>Every step of our supply chain is optimized for freshness, quality, and efficiency.</p>
+        <p>Dallah Fresh functions as an integrated end-to-end operator, maintaining direct oversight across sourcing, importation, processing, packaging, nationwide distribution and retail channels. This vertically integrated model allows the company to safeguard product quality, manage supply continuity and respond rapidly to market demand.</p>
+      </div>
+
+      <div class="process-flow reveal">
+        <div class="process-step">
+          <div class="process-step-icon"></div>
+          <h4>Sourcing</h4>
+          <p>Global farm partnerships</p>
+        </div>
+        <div class="process-arrow">→</div>
+        <div class="process-step">
+          <div class="process-step-icon"></div>
+          <h4>Import</h4>
+          <p>Quality-checked imports</p>
+        </div>
+        <div class="process-arrow">→</div>
+        <div class="process-step">
+          <div class="process-step-icon"></div>
+          <h4>Processing</h4>
+          <p>Cleaning & sorting</p>
+        </div>
+        <div class="process-arrow">→</div>
+        <div class="process-step">
+          <div class="process-step-icon"></div>
+          <h4>Packaging</h4>
+          <p>Premium packaging</p>
+        </div>
+        <div class="process-arrow">→</div>
+        <div class="process-step">
+          <div class="process-step-icon"></div>
+          <h4>Distribution</h4>
+          <p>Cold chain delivery</p>
+        </div>
+        <div class="process-arrow">→</div>
+        <div class="process-step">
+          <div class="process-step-icon"></div>
+          <h4>Retail</h4>
+          <p>To your doorstep</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- International Sourcing -->
+  <section class="section section-alt" id="international-sourcing">
+    <div class="container">
+      <div class="split-section">
+        <div class="split-text reveal-left">
+          <span class="label">Global Sourcing</span>
+          <h2>Premium Produce From Around the World</h2>
+          <p>Dallah Fresh combines international sourcing with established partnerships across Omani farms to maintain year-round availability and seasonal flexibility. The company works closely with local growers to support crop planning, consistent volumes and quality alignment, reinforcing its contribution to domestic agriculture.</p>
+          <p>Complementing domestic supply, Dallah Fresh maintains active procurement channels across key producing regions. This geographically diversified network strengthens supply continuity, mitigates seasonal risk and enables responsive sourcing across a wide product portfolio.</p>
+          <ul>
+            <li>10+ source countries across 4 continents</li>
+            <li>Direct farm partnerships for quality control</li>
+            <li>Seasonal & year-round availability</li>
+            <li>Full traceability from field to shelf</li>
+          </ul>
+        </div>
+        <div class="split-image reveal-right">
+          <img src="images/farm-landscape.png" alt="Lush agricultural farmland" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Local Farm Partnerships -->
+  <section class="section section-vibrant-orange" id="local-farms">
+    <div class="container">
+      <div class="split-section reverse">
+        <div class="split-text reveal-right">
+          <span class="label">Local Partnerships</span>
+          <h2>Supporting Oman's Local Farmers</h2>
+          <p>We believe in strengthening local agriculture. Our partnerships with Omani farmers ensure fresh, locally-grown produce reaches our clients while supporting the national agricultural economy.</p>
+          <ul>
+            <li>Direct partnerships with Omani farms</li>
+            <li>Supporting local agricultural development</li>
+            <li>Same-day harvest-to-delivery for select items</li>
+            <li>Seasonal Omani specialties and organic options</li>
+          </ul>
+        </div>
+        <div class="split-image reveal-left">
+          <img src="images/quality-inspection.png" alt="Quality inspection of fresh produce" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality Assurance -->
+  <section class="section section-vibrant-green" id="qa">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Quality Assurance</span>
+        <h2>Uncompromising Quality Standards</h2>
+        <p>Food safety and quality are at the core of everything we do.</p>
+      </div>
+      <div class="cards-grid">
+        <div class="card reveal delay-1">
+          <h3>Quality Testing</h3>
+          <p>Every batch undergoes rigorous quality testing for freshness, taste, appearance, and safety before distribution.</p>
+        </div>
+        <div class="card reveal delay-2">
+          <h3>Traceability</h3>
+          <p>Complete traceability from farm to table. Every product can be traced back to its source for full accountability.</p>
+        </div>
+        <div class="card reveal delay-3">
+          <h3>Temperature Control</h3>
+          <p>End-to-end cold chain management ensures optimal temperature maintenance throughout the supply chain.</p>
+        </div>
+        <div class="card reveal delay-4">
+          <h3>Year-Round Supply</h3>
+          <p>Strategic multi-country sourcing ensures consistent availability of all produce varieties throughout the year.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="section section-vibrant-red" id="certifications">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Certifications</span>
+        <h2>Internationally Recognized Standards</h2>
+      </div>
+      <div class="cert-grid">
+        <div class="cert-card reveal delay-1">
+          <div class="cert-badge">🛡️</div>
+          <h3>ISO 22000:2018</h3>
+          <p>International food safety management certification ensuring systematic identification and control of food safety hazards.</p>
+        </div>
+        <div class="cert-card reveal delay-2">
+          <div class="cert-badge">✅</div>
+          <h3>HACCP Certified</h3>
+          <p>Hazard Analysis Critical Control Point certification for comprehensive food safety prevention and monitoring.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="reveal">Want to Learn More About Our Process?</h2>
+      <p class="reveal delay-1">Contact us for a detailed walkthrough of our operations and quality systems.</p>
+      <a href="contact.html" class="btn btn-secondary reveal delay-2">Contact Our Team →</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer footer-light" id="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">DALLAH <span>FRESH</span></div>
+          <p class="footer-desc">Oman's premier fresh produce importing company. Delivering quality, freshness, and trust since 1985.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="LinkedIn">LI</a>
+            <a href="#" aria-label="Twitter">TW</a>
+          </div>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="operations.html">Operations</a></li>
+            <li><a href="infrastructure.html">Infrastructure</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Services</h4>
+          <ul class="footer-links">
+            <li><a href="operations.html">Global Sourcing</a></li>
+            <li><a href="operations.html">Import & Processing</a></li>
+            <li><a href="infrastructure.html">Cold Chain Logistics</a></li>
+            <li><a href="operations.html">Quality Assurance</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📍</span>
+            <span>Salalah, Oman (Head Office)</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">📞</span>
+            <span>+968 2345 6789</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">✉️</span>
+            <span>info@dallahfresh.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <span>© 2025 DALLAH FRESH. All Rights Reserved.</span>
+        <span>Designed with 🍃 in Oman</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
