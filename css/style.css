@@ -2271,3 +2271,33 @@ p {
   color: var(--green);
   text-decoration: underline;
 }
+
+/* ---------- Mission & Vision Cards — Mobile Rectangle Layout ---------- */
+@media (max-width: 768px) {
+  .mission-vision-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .mission-vision-grid .card {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 20px 24px !important;
+    border-radius: 12px !important;
+    min-height: unset !important;
+    height: auto !important;
+  }
+
+  .mission-vision-grid .card h3 {
+    font-size: 1.1rem !important;
+    margin-bottom: 10px !important;
+    color: var(--green-dark) !important;
+  }
+
+  .mission-vision-grid .card p {
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    color: var(--gray) !important;
+    margin: 0 !important;
+  }
+}
