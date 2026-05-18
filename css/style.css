@@ -380,8 +380,8 @@ p {
 /* ---------- Hero Section (Image Sequence Animation) ---------- */
 .hero-sequence {
   position: relative;
-  height: 1000vh;
-  /* More room for ultra-smooth easing at the end */
+  height: 600vh;
+  /* More snappier speed, perfectly fluid scroll */
   background-color: #000;
 }
 
@@ -420,8 +420,8 @@ p {
   height: 100%;
   object-fit: cover;
   z-index: 1;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
+  image-rendering: auto;
+  image-rendering: high-quality;
   backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
   /* Force hardware acceleration */
@@ -837,14 +837,14 @@ p {
 
 .split-text ul li {
   padding: 8px 0;
-  padding-left: 0;
+  padding-left: 20px;
   position: relative;
   color: var(--gray);
   font-size: 1rem;
 }
 
 .split-text ul li::before {
-  content: none;
+  content: '•';
   position: absolute;
   left: 0;
   color: var(--green-primary);

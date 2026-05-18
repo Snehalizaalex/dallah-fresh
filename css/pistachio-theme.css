@@ -1,0 +1,75 @@
+/* ── Pistachio Theme for Inner Pages ── */
+:root {
+  --pistachio: #93C572;
+  --pistachio-dark: #6a9e4f;
+  --pistachio-light: #c8e6b0;
+  --pistachio-pale: #eef7e8;
+}
+body { background-color: #f0f7eb; }
+.page-hero { background: linear-gradient(135deg, #6a9e4f 0%, #93C572 50%, #b5d99c 100%); }
+.page-hero-content h1 { color: #fff; }
+.page-hero-content p { color: rgba(255,255,255,0.9); }
+.page-hero .breadcrumb { color: rgba(255,255,255,0.75); }
+.page-hero .breadcrumb a { color: #fff; }
+.section-vibrant-green { background: var(--pistachio-pale); }
+.section-alt { background: #e4f2da; }
+.section-vibrant-orange { background: var(--pistachio-pale); }
+.section-vibrant-red { background: #e4f2da; }
+.label { background: var(--pistachio-light) !important; color: var(--pistachio-dark) !important; }
+.card { background: #fff; border-color: var(--pistachio-light); }
+.card::before { background: linear-gradient(90deg, var(--pistachio), var(--pistachio-dark)); }
+.cert-card { background: #fff; border-left: 4px solid var(--pistachio); }
+.process-step-icon { background: var(--pistachio-light); }
+.process-arrow { color: var(--pistachio-dark); }
+.cta-section { background: linear-gradient(135deg, #6a9e4f, #93C572); color: #fff; }
+.cta-section h2, .cta-section p { color: #fff !important; }
+.stat-number { color: var(--pistachio-dark); }
+.card h3 { color: var(--pistachio-dark); }
+h2 { color: #3a5a2a; }
+.btn-secondary { background: linear-gradient(135deg, var(--pistachio-dark), #4a7a32) !important; }
+
+/* Contact Page Overrides */
+#contact-section, #all-offices { background: var(--pistachio-pale) !important; }
+.contact-form { background: #ffffff !important; border-top: 4px solid var(--pistachio); }
+
+/* Values, Technology & QA Section 4th Card Centering */
+@media (min-width: 992px) {
+  #values .cards-grid, #technology .cards-grid, #qa .cards-grid { grid-template-columns: repeat(3, 1fr); }
+  #values .cards-grid .card:last-child, #technology .cards-grid .card:last-child, #qa .cards-grid .card:last-child { grid-column: 2; }
+}
+
+/* Timeline, Mission-Vision, Stats & Values Background Override */
+#timeline, #about-stats { background-color: var(--pistachio-pale) !important; }
+#values { background-color: #e4f2da !important; }
+#mission-vision { background-color: #708238 !important; }
+
+/* About Page Bisque Background Override to Light Green */
+.bg-bisque {
+  background-color: var(--pistachio-pale) !important;
+}
+.bg-bisque .page-hero {
+  background-color: var(--pistachio-pale) !important;
+}
+
+/* Operations Process Step Icon Image Overrides */
+.process-step-icon {
+  width: 95px !important;
+  height: 95px !important;
+  border: 4px solid var(--white) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+.process-step:hover .process-step-icon {
+  transform: scale(1.15) !important;
+  box-shadow: 0 15px 35px rgba(147, 197, 114, 0.45) !important;
+}
+.process-sourcing { background-image: url('../images/farm-landscape.png') !important; }
+.process-import { background-image: url('../images/quality-inspection.png') !important; }
+.process-processing { background-image: url('../images/warehouse.png') !important; }
+.process-packaging { background-image: url('../images/quality_first_1779041362287.png') !important; }
+.process-distribution { background-image: url('../images/logistics-fleet.png') !important; }
+.process-retail { background-image: url('../images/hero-produce.png') !important; }
+

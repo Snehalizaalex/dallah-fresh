@@ -186,8 +186,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const updateCanvasSize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
       render(currentFrameIndex);
     };
 
@@ -386,13 +389,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 4000);
   }
 
-  // ---- Add slideIn animation ----
-  const style = document.createElement('style');
-  style.textContent = `
+  // ---- Add slideIn animation for notifications ----
+  const bgStyle = document.createElement('style');
+  bgStyle.textContent = `
     @keyframes slideIn {
       from { opacity: 0; transform: translateX(40px); }
       to { opacity: 1; transform: translateX(0); }
     }
   `;
-  document.head.appendChild(style);
+  document.head.appendChild(bgStyle);
 });
