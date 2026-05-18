@@ -166,27 +166,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const imgRatio = img.width / img.height;
       let drawWidth, drawHeight, offsetX, offsetY;
 
-      // Fit the image horizontally on mobile to ensure 'Dallah Fresh' text is fully visible on all phone screens
-      const isMobile = window.innerWidth < 768;
-
-      if (isMobile) {
-        const horizontalMarginFactor = 0.90; // Clean 5% breathing margin on each side
-        drawWidth = canvas.width * horizontalMarginFactor;
-        drawHeight = drawWidth / imgRatio;
-        offsetX = (canvas.width - drawWidth) / 2;
+      if (canvasRatio > imgRatio) {
+        drawWidth = canvas.width;
+        drawHeight = canvas.width / imgRatio;
+        offsetX = 0;
         offsetY = (canvas.height - drawHeight) / 2;
       } else {
-        if (canvasRatio > imgRatio) {
-          drawWidth = canvas.width;
-          drawHeight = canvas.width / imgRatio;
-          offsetX = 0;
-          offsetY = (canvas.height - drawHeight) / 2;
-        } else {
-          drawWidth = canvas.height * imgRatio;
-          drawHeight = canvas.height;
-          offsetX = (canvas.width - drawWidth) / 2;
-          offsetY = 0;
-        }
+        drawWidth = canvas.height * imgRatio;
+        drawHeight = canvas.height;
+        offsetX = (canvas.width - drawWidth) / 2;
+        offsetY = 0;
       }
 
       context.clearRect(0, 0, canvas.width, canvas.height);
