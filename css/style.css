@@ -1726,8 +1726,16 @@ p {
     --section-padding: 70px 0;
   }
 
+  .navbar-brand {
+    transform: translateY(2px) scale(1.1) !important;
+  }
+
   .hamburger {
     display: flex;
+  }
+
+  .hamburger span {
+    background: #36013F !important; /* Stand out beautifully in brand purple against cream header */
   }
 
   .nav-links {
@@ -1743,6 +1751,7 @@ p {
     box-shadow: -10px 0 40px var(--shadow-strong);
     transition: var(--transition-slow);
     gap: 4px;
+    z-index: 1000; /* Ensure drawer menu lays on top of everything */
   }
 
   .nav-links.open {
@@ -1761,6 +1770,47 @@ p {
   .nav-links a.active {
     background: var(--green-pale) !important;
     color: var(--green-primary) !important;
+  }
+
+  /* Centered Hero overlay on mobile view for high-end feel */
+  .hero-text-part {
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    width: calc(100% - 48px) !important;
+    max-width: 100% !important;
+  }
+
+  .hero-text-part.active {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translate(-50%, -50%) translateY(0) !important;
+  }
+
+  .hero-text-part.fade-up-init {
+    transform: translate(-50%, -50%) translateY(40px) !important;
+    opacity: 0 !important;
+  }
+
+  .hero-text-part.fade-up-exit {
+    transform: translate(-50%, -50%) translateY(-40px) !important;
+    opacity: 0 !important;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3.2rem) !important;
+    line-height: 1.15 !important;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem !important;
+    margin-bottom: 24px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .hero-actions {
+    justify-content: center !important;
   }
 
   .hero-scroll-container {
@@ -1870,6 +1920,10 @@ p {
   .hero-slide-content {
     margin-left: 16px;
     margin-right: 16px;
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr;
   }
 
   .cards-grid {
