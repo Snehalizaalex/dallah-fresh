@@ -552,33 +552,6 @@ p {
   color: #E5B800;
 }
 
-.accent-dallah-purple {
-  color: #36013F !important;
-}
-
-.accent-white {
-  color: var(--white) !important;
-}
-
-/* Responsive visibility helpers */
-.desktop-only {
-  display: inline-block;
-}
-
-.mobile-only {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .desktop-only {
-    display: none !important;
-  }
-  
-  .mobile-only {
-    display: inline-block !important;
-  }
-}
-
 /* Reused Scroll Hint */
 .hero-scroll-hint {
   position: absolute;
