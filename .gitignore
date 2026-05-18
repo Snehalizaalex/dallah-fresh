@@ -10,3 +10,13 @@ Thumbs.db
 
 # Ignore node_modules if you ever use them
 node_modules/
+
+# Ignore massive raw assets and zips
+*.zip
+scroll 4 images/
+scroll 4 images clean/
+ezgif-6437e74e255de67d-png-split/
+frames_4k/
+frames_clean/
+frames_ultra/
+test.webp

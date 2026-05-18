@@ -120,12 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const textPart2 = document.getElementById('text-part-2');
 
   if (heroSequence && canvas && context) {
-    const frameCount = 300;
+    const frameCount = 240;
     const images = [];
     let currentFrameIndex = 0;
 
     // Build image path
-    const getFramePath = index => `frames_ultra/frame_${(index + 1).toString().padStart(4, '0')}.webp`;
+    const getFramePath = index => `frames_perfect/frame_${(index + 1).toString().padStart(3, '0')}.webp`;
 
     // Preload & Decode images for zero-latency rendering
     let loadedCount = 0;
@@ -180,13 +180,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       context.clearRect(0, 0, canvas.width, canvas.height);
       
+      // Ensure 4K clarity and smoothness
+      context.imageSmoothingEnabled = true;
+      context.imageSmoothingQuality = 'high';
+      
       // Add a slight transparency factor based on scroll ending if needed
       context.globalAlpha = 1; 
       context.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
     }
 
     const updateCanvasSize = () => {
-      const dpr = window.devicePixelRatio || 1;
+      const dpr = Math.max(window.devicePixelRatio || 1, 2); // Force at least 2x for 4K quality
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
       canvas.style.width = window.innerWidth + 'px';
