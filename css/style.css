@@ -1786,8 +1786,18 @@ p {
     align-items: center !important;
   }
 
+  .navbar .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
   .navbar-brand {
-    transform: translate(-18px, -2px) scale(0.85) !important;
+    transform: translate(-8px, -2px) scale(0.85) !important;
   }
 
   .hamburger {
