@@ -16,10 +16,33 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---- Sticky Navbar ----
   const navbar = document.querySelector('.navbar');
   const handleScroll = () => {
+    const isMobileViewport = window.innerWidth <= 768;
+    const heroSequence = document.getElementById('hero-sequence');
+
     if (window.scrollY > 60) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
+    }
+
+    if (isMobileViewport && heroSequence) {
+      // Hide navbar during the active scroll animation region (approx 2.5 screens of scroll distance)
+      // and slide it down beautifully only when the user scrolls past the animation region.
+      const triggerThreshold = window.innerHeight * 2.5; 
+      if (window.scrollY < triggerThreshold) {
+        navbar.style.transform = 'translateY(-100%)';
+        navbar.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+        navbar.style.pointerEvents = 'none';
+      } else {
+        navbar.style.transform = 'translateY(0)';
+        navbar.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+        navbar.style.pointerEvents = 'auto';
+      }
+    } else {
+      // Reset styles for desktop or inner pages
+      navbar.style.transform = '';
+      navbar.style.transition = '';
+      navbar.style.pointerEvents = '';
     }
   };
   window.addEventListener('scroll', handleScroll);
