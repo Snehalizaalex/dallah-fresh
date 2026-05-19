@@ -187,6 +187,31 @@ document.addEventListener('DOMContentLoaded', () => {
       // Add a slight transparency factor based on scroll ending if needed
       context.globalAlpha = 1; 
       context.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+
+      // Cleanly mask the watermark "veo" in the bottom-left corner of the viewport/canvas by
+      // clone-stamping the actual animated background texture from directly above the watermark area.
+      const dpr = Math.max(window.devicePixelRatio || 1, 2);
+      const maskWidth = 220 * dpr;
+      const maskHeight = 70 * dpr;
+      
+      try {
+        const sourceX = 0;
+        const sourceY = canvas.height - (maskHeight * 2);
+        
+        if (sourceY >= 0) {
+          context.drawImage(
+            canvas,
+            sourceX, sourceY, maskWidth, maskHeight, // Source region (clean textured background)
+            0, canvas.height - maskHeight, maskWidth, maskHeight // Destination region (watermark)
+          );
+        } else {
+          context.fillStyle = '#bcb5a2';
+          context.fillRect(0, canvas.height - maskHeight, maskWidth, maskHeight);
+        }
+      } catch (e) {
+        context.fillStyle = '#bcb5a2'; // Elegant fallback
+        context.fillRect(0, canvas.height - maskHeight, maskWidth, maskHeight);
+      }
     }
 
     const updateCanvasSize = () => {
