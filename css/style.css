@@ -1214,6 +1214,28 @@ p {
   margin-bottom: 10px;
 }
 
+.cert-card-img {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.cert-card-img img {
+  max-width: 100%;
+  height: auto;
+  max-height: 380px;
+  object-fit: contain;
+  border-radius: 6px;
+  transition: transform 0.3s ease;
+}
+
+.cert-card-img:hover img {
+  transform: scale(1.04);
+}
+
 /* ---------- CTA Section ---------- */
 .cta-section {
   background: var(--cream-dark);
