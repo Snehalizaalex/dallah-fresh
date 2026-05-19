@@ -123,9 +123,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const frameCount = 240;
     const images = [];
     let currentFrameIndex = 0;
+    // Automatically reload page to instantly swap image sequences when developer resizes/toggles mobile responsive emulator in DevTools
+    const initialIsMobile = window.innerWidth <= 768;
+    window.addEventListener('resize', () => {
+      const currentIsMobile = window.innerWidth <= 768;
+      if (currentIsMobile !== initialIsMobile) {
+        window.location.reload();
+      }
+    });
 
-    // Build image path
-    const getFramePath = index => `frames_perfect/frame_${(index + 1).toString().padStart(3, '0')}.webp`;
+    // Build image path dynamically based on screen resolution at load-time
+    const isMobile = initialIsMobile;
+    console.log('Dallah Fresh Animation - Environment detected:', isMobile ? 'MOBILE (Loading scroll mob 2 PNGs)' : 'DESKTOP (Loading frames_perfect WebPs)');
+    
+    const getFramePath = index => {
+      if (isMobile) {
+        return `scroll mob 2/ezgif-frame-${(index + 1).toString().padStart(3, '0')}.png`;
+      } else {
+        return `frames_perfect/frame_${(index + 1).toString().padStart(3, '0')}.webp`;
+      }
+    };
 
     // Preload & Decode images for zero-latency rendering
     let loadedCount = 0;
@@ -161,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const img = images[index];
       if (!img || !img.complete) return;
 
-      // Canvas Cover logic
+      // Canvas Cover logic (Immersive full-screen coverage on all screen sizes)
       const canvasRatio = canvas.width / canvas.height;
       const imgRatio = img.width / img.height;
       let drawWidth, drawHeight, offsetX, offsetY;
@@ -178,6 +195,12 @@ document.addEventListener('DOMContentLoaded', () => {
         offsetY = 0;
       }
 
+      // Shift the mobile sequence slightly to the left to prevent the "Dallah Fresh" right edge (letter 'h') from clipping.
+      if (isMobile) {
+        const dpr = Math.max(window.devicePixelRatio || 1, 2);
+        offsetX -= 18 * dpr;
+      }
+
       context.clearRect(0, 0, canvas.width, canvas.height);
       
       // Ensure 4K clarity and smoothness
@@ -188,29 +211,68 @@ document.addEventListener('DOMContentLoaded', () => {
       context.globalAlpha = 1; 
       context.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
 
-      // Cleanly mask the watermark "veo" in the bottom-left corner of the viewport/canvas by
-      // clone-stamping the actual animated background texture from directly above the watermark area.
-      const dpr = Math.max(window.devicePixelRatio || 1, 2);
-      const maskWidth = 220 * dpr;
-      const maskHeight = 70 * dpr;
-      
-      try {
-        const sourceX = 0;
-        const sourceY = canvas.height - (maskHeight * 2);
+      // Cleanly mask the watermark "veo" in the bottom-left corner of the viewport/canvas on desktop view.
+      // We skip this on mobile view because the mobile frames are clean and don't have the watermark.
+      if (!isMobile) {
+        const dpr = Math.max(window.devicePixelRatio || 1, 2);
+        const maskWidth = 220 * dpr;
+        const maskHeight = 70 * dpr;
         
-        if (sourceY >= 0) {
-          context.drawImage(
-            canvas,
-            sourceX, sourceY, maskWidth, maskHeight, // Source region (clean textured background)
-            0, canvas.height - maskHeight, maskWidth, maskHeight // Destination region (watermark)
-          );
-        } else {
-          context.fillStyle = '#bcb5a2';
+        try {
+          const sourceX = 0;
+          const sourceY = canvas.height - (maskHeight * 2);
+          
+          if (sourceY >= 0) {
+            // Initialize offscreen canvas lazily to keep rendering highly performant
+            if (!canvas.offscreenCanvas) {
+              canvas.offscreenCanvas = document.createElement('canvas');
+              canvas.offscreenContext = canvas.offscreenCanvas.getContext('2d');
+            }
+            const offCanvas = canvas.offscreenCanvas;
+            const offCtx = canvas.offscreenContext;
+            
+            offCanvas.width = maskWidth;
+            offCanvas.height = maskHeight;
+            
+            // Draw the clean cloned texture patch onto the offscreen canvas
+            offCtx.drawImage(
+              canvas,
+              sourceX, sourceY, maskWidth, maskHeight, // Source region from main canvas
+              0, 0, maskWidth, maskHeight // Destination on offscreen canvas
+            );
+            
+            // Smoothly feather the right and top edges on the offscreen canvas
+            const featherX = 40 * dpr; // 40px feathered transition on the right
+            const featherY = 25 * dpr; // 25px feathered transition on the top
+            
+            offCtx.globalCompositeOperation = 'destination-out';
+            
+            // Right edge feather (fade out from opaque to transparent)
+            const gradX = offCtx.createLinearGradient(maskWidth - featherX, 0, maskWidth, 0);
+            gradX.addColorStop(0, 'rgba(0, 0, 0, 0)');
+            gradX.addColorStop(1, 'rgba(0, 0, 0, 1)');
+            offCtx.fillStyle = gradX;
+            offCtx.fillRect(maskWidth - featherX, 0, featherX, maskHeight);
+            
+            // Top edge feather (fade out from transparent to opaque)
+            const gradY = offCtx.createLinearGradient(0, 0, 0, featherY);
+            gradY.addColorStop(0, 'rgba(0, 0, 0, 1)');
+            gradY.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            offCtx.fillStyle = gradY;
+            offCtx.fillRect(0, 0, maskWidth, featherY);
+            
+            // Draw the feathered texture patch back onto the main canvas
+            // Since the main canvas remains fully opaque, this completely prevents the container's
+            // white background color from ever showing through.
+            context.drawImage(offCanvas, 0, canvas.height - maskHeight);
+          } else {
+            context.fillStyle = '#bcb5a2';
+            context.fillRect(0, canvas.height - maskHeight, maskWidth, maskHeight);
+          }
+        } catch (e) {
+          context.fillStyle = '#bcb5a2'; // Elegant fallback
           context.fillRect(0, canvas.height - maskHeight, maskWidth, maskHeight);
         }
-      } catch (e) {
-        context.fillStyle = '#bcb5a2'; // Elegant fallback
-        context.fillRect(0, canvas.height - maskHeight, maskWidth, maskHeight);
       }
     }
 

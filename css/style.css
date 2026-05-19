@@ -552,6 +552,33 @@ p {
   color: #E5B800;
 }
 
+.accent-dallah-purple {
+  color: #36013F !important;
+}
+
+.accent-white {
+  color: var(--white) !important;
+}
+
+/* Responsive visibility helpers */
+.desktop-only {
+  display: inline-block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+  
+  .mobile-only {
+    display: inline-block !important;
+  }
+}
+
 /* Reused Scroll Hint */
 .hero-scroll-hint {
   position: absolute;
@@ -1828,15 +1855,27 @@ p {
     line-height: 1.15 !important;
   }
 
+  /* Mobile Dallah Fresh split heading — make each word clearly visible on its own line */
+  .hero-title .mobile-only {
+    display: block !important;
+    font-size: clamp(2.8rem, 14vw, 4.2rem) !important;
+    line-height: 1.1 !important;
+    font-weight: 900 !important;
+    letter-spacing: -0.5px !important;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+    white-space: normal !important;
+  }
+
+  .hero-tag {
+    display: none !important;
+  }
+
   .hero-desc {
-    font-size: 1.05rem !important;
-    margin-bottom: 24px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    display: none !important;
   }
 
   .hero-actions {
-    justify-content: center !important;
+    display: none !important;
   }
 
   .hero-scroll-container {
