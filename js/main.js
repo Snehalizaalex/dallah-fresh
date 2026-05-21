@@ -143,11 +143,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const textPart2 = document.getElementById('text-part-2');
 
   if (heroSequence && canvas && context) {
-    const frameCount = 240;
+    // Mobile: 240 frames (001–240) from 'scroll mob 2'
+    // Desktop: 230 frames (011–240) from 'scroll splash hero desktopbwithout veo and frst part'
+    const initialIsMobile = window.innerWidth <= 768;
+    const isMobile = initialIsMobile;
+    const frameCount = isMobile ? 240 : 230;
+
     const images = [];
     let currentFrameIndex = 0;
+
     // Automatically reload page to instantly swap image sequences when developer resizes/toggles mobile responsive emulator in DevTools
-    const initialIsMobile = window.innerWidth <= 768;
     window.addEventListener('resize', () => {
       const currentIsMobile = window.innerWidth <= 768;
       if (currentIsMobile !== initialIsMobile) {
@@ -155,15 +160,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Build image path dynamically based on screen resolution at load-time
-    const isMobile = initialIsMobile;
-    console.log('Dallah Fresh Animation - Environment detected:', isMobile ? 'MOBILE (Loading scroll mob 2 PNGs)' : 'DESKTOP (Loading frames_perfect WebPs)');
-    
+    console.log('Dallah Fresh Animation -', isMobile ? 'MOBILE: scroll mob 2 (240 frames)' : 'DESKTOP: scroll splash hero (230 frames, 011–240)');
+
     const getFramePath = index => {
       if (isMobile) {
+        // Mobile frames: 001 → 240
         return `scroll mob 2/ezgif-frame-${(index + 1).toString().padStart(3, '0')}.png`;
       } else {
-        return `frames_perfect/frame_${(index + 1).toString().padStart(3, '0')}.webp`;
+        // Desktop frames: 011 → 240 (230 frames total, offset by 10)
+        return `scroll splash hero desktopbwithout veo and frst part/ezgif-frame-${(index + 11).toString().padStart(3, '0')}.png`;
       }
     };
 
@@ -218,85 +223,20 @@ document.addEventListener('DOMContentLoaded', () => {
         offsetY = 0;
       }
 
-      // Shift the mobile sequence slightly to the left to prevent the "Dallah Fresh" right edge (letter 'h') from clipping.
+      // On mobile, nudge the frame left so the "Dallah Fresh" 'h' doesn't clip at the right edge
       if (isMobile) {
         const dpr = Math.max(window.devicePixelRatio || 1, 2);
-        offsetX -= 18 * dpr;
+        offsetX -= 22 * dpr;
       }
 
       context.clearRect(0, 0, canvas.width, canvas.height);
-      
+
       // Ensure 4K clarity and smoothness
       context.imageSmoothingEnabled = true;
       context.imageSmoothingQuality = 'high';
-      
-      // Add a slight transparency factor based on scroll ending if needed
-      context.globalAlpha = 1; 
-      context.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
 
-      // Cleanly mask the watermark "veo" in the bottom-left corner of the viewport/canvas on desktop view.
-      // We skip this on mobile view because the mobile frames are clean and don't have the watermark.
-      if (!isMobile) {
-        const dpr = Math.max(window.devicePixelRatio || 1, 2);
-        const maskWidth = 220 * dpr;
-        const maskHeight = 70 * dpr;
-        
-        try {
-          const sourceX = 0;
-          const sourceY = canvas.height - (maskHeight * 2);
-          
-          if (sourceY >= 0) {
-            // Initialize offscreen canvas lazily to keep rendering highly performant
-            if (!canvas.offscreenCanvas) {
-              canvas.offscreenCanvas = document.createElement('canvas');
-              canvas.offscreenContext = canvas.offscreenCanvas.getContext('2d');
-            }
-            const offCanvas = canvas.offscreenCanvas;
-            const offCtx = canvas.offscreenContext;
-            
-            offCanvas.width = maskWidth;
-            offCanvas.height = maskHeight;
-            
-            // Draw the clean cloned texture patch onto the offscreen canvas
-            offCtx.drawImage(
-              canvas,
-              sourceX, sourceY, maskWidth, maskHeight, // Source region from main canvas
-              0, 0, maskWidth, maskHeight // Destination on offscreen canvas
-            );
-            
-            // Smoothly feather the right and top edges on the offscreen canvas
-            const featherX = 40 * dpr; // 40px feathered transition on the right
-            const featherY = 25 * dpr; // 25px feathered transition on the top
-            
-            offCtx.globalCompositeOperation = 'destination-out';
-            
-            // Right edge feather (fade out from opaque to transparent)
-            const gradX = offCtx.createLinearGradient(maskWidth - featherX, 0, maskWidth, 0);
-            gradX.addColorStop(0, 'rgba(0, 0, 0, 0)');
-            gradX.addColorStop(1, 'rgba(0, 0, 0, 1)');
-            offCtx.fillStyle = gradX;
-            offCtx.fillRect(maskWidth - featherX, 0, featherX, maskHeight);
-            
-            // Top edge feather (fade out from transparent to opaque)
-            const gradY = offCtx.createLinearGradient(0, 0, 0, featherY);
-            gradY.addColorStop(0, 'rgba(0, 0, 0, 1)');
-            gradY.addColorStop(1, 'rgba(0, 0, 0, 0)');
-            offCtx.fillStyle = gradY;
-            offCtx.fillRect(0, 0, maskWidth, featherY);
-            
-            // Draw the feathered texture patch back onto the main canvas
-            // Since the main canvas remains fully opaque, this completely prevents the container's
-            // white background color from ever showing through.
-            context.drawImage(offCanvas, 0, canvas.height - maskHeight);
-          } else {
-            context.fillStyle = '#bcb5a2';
-            context.fillRect(0, canvas.height - maskHeight, maskWidth, maskHeight);
-          }
-        } catch (e) {
-          context.fillStyle = '#bcb5a2'; // Elegant fallback
-          context.fillRect(0, canvas.height - maskHeight, maskWidth, maskHeight);
-        }
-      }
+      context.globalAlpha = 1;
+      context.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
     }
 
     const updateCanvasSize = () => {

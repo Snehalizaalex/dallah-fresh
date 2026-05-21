@@ -733,34 +733,38 @@ p {
 }
 
 .country-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   background: var(--white);
   border-radius: var(--border-radius);
-  padding: 30px 20px;
-  text-align: center;
+  padding: 16px 20px;
   transition: var(--transition);
   border: 1px solid var(--gray-lighter);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .country-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   border-color: var(--green-light);
 }
 
 .country-flag {
-  width: 60px;
-  height: auto;
+  flex-shrink: 0;
+  width: 56px;
+  height: 38px;
+  object-fit: cover;
   display: block;
-  margin: 0 auto 15px;
   border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
 .country-card h4 {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--dark);
   margin: 0;
+  line-height: 1.2;
 }
 
 .card {
@@ -1510,9 +1514,9 @@ p {
 .country-card {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   padding: 16px 20px;
-  background: var(--cream-bg);
+  background: #ffffff;
   border-radius: var(--border-radius-sm);
   border: 1px solid var(--gray-lighter);
   transition: var(--transition);
@@ -1525,11 +1529,19 @@ p {
 }
 
 .country-flag {
-  font-size: 2rem;
+  flex-shrink: 0;
+  width: 56px;
+  height: 38px;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
 .country-card h4 {
   font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.2;
 }
 
 /* ---------- Footer ---------- */
@@ -2249,29 +2261,39 @@ p {
 }
 
 .country-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
   flex: 0 1 calc(25% - 20px);
   background: #ffffff;
   border-radius: 12px;
-  padding: 20px;
-  text-align: center;
+  padding: 16px 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--gray-lighter);
   transition: transform 0.3s ease;
   box-sizing: border-box;
 }
 
 .country-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .country-flag {
-  width: 50px;
-  height: auto;
-  margin-bottom: 10px;
+  flex-shrink: 0;
+  width: 56px;
+  height: 38px;
+  object-fit: cover;
+  display: block;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
 }
 
 .country-card h4 {
   color: #333;
   font-size: 1rem;
+  margin: 0;
+  line-height: 1.2;
 }
 
 /* Responsive for Countries Grid */
