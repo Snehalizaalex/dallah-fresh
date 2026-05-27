@@ -68,6 +68,7 @@ body {
   color: var(--dark);
   background-color: var(--cream-bg);
   line-height: 1.7;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -1796,14 +1797,23 @@ p {
 
   .navbar {
     left: 16px !important;
-    right: 16px !important;
-    width: auto !important;
+    width: calc(100vw - 32px) !important;
     transform: none !important;
     height: 60px !important;
     padding: 0 !important;
     border-radius: 40px !important;
     top: 10px !important;
     display: block !important;
+  }
+
+  .reveal-left, 
+  .reveal-right {
+    transform: translateY(30px) !important;
+  }
+  
+  .reveal-left.active, 
+  .reveal-right.active {
+    transform: translateY(0) !important;
   }
 
   .navbar .container {
@@ -2408,5 +2418,17 @@ p {
     line-height: 1.6 !important;
     color: var(--gray) !important;
     margin: 0 !important;
+  }
+
+  /* Disable jumpy hover effects on mobile where tapping triggers hover */
+  .card:hover,
+  .facility-card:hover,
+  .country-card:hover,
+  .client-card:hover,
+  .cert-card:hover,
+  .timeline-content:hover,
+  .process-step:hover,
+  .contact-info-card:hover {
+    transform: none !important;
   }
 }
