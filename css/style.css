@@ -68,7 +68,6 @@ body {
   color: var(--dark);
   background-color: var(--cream-bg);
   line-height: 1.7;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -254,16 +253,20 @@ p {
 /* ---------- Navbar ---------- */
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 1200px;
   z-index: 1000;
-  background: rgba(255, 249, 230, 0.95);
+  background: rgba(255, 249, 230, 0.92);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-  padding: 2px 0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0,0,0,0.08);
+  padding: 4px 24px;
+  border-radius: 60px;
   transition: var(--transition);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 
@@ -418,9 +421,9 @@ p {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
-  width: 100vw !important;
+  width: 100% !important;
   height: 100vh !important;
-  min-width: 100vw !important;
+  min-width: 100% !important;
   min-height: 100vh !important;
   max-width: none !important;
   max-height: none !important;
@@ -1792,16 +1795,22 @@ p {
   }
 
   .navbar {
+    left: 16px !important;
+    right: 16px !important;
+    width: auto !important;
+    transform: none !important;
+    height: 60px !important;
     padding: 0 !important;
-    height: 65px !important;
-    display: flex !important;
-    align-items: center !important;
+    border-radius: 40px !important;
+    top: 10px !important;
+    display: block !important;
   }
 
   .navbar .container {
     max-width: 100% !important;
     width: 100% !important;
-    padding-left: 10px !important;
+    height: 100% !important;
+    padding-left: 20px !important;
     padding-right: 20px !important;
     display: flex !important;
     justify-content: space-between !important;
