@@ -176,28 +176,28 @@ document.addEventListener('DOMContentLoaded', () => {
     let loadedCount = 0;
     const loadingText = document.querySelector('.hero-sequence-sticky');
     async function preloadImages() {
-      const promises = [];
+      // Create empty image slots
       for (let i = 0; i < frameCount; i++) {
-        const img = new Image();
-        img.src = getFramePath(i);
-        const promise = new Promise((resolve) => {
-          img.onload = async () => {
-            if (img.decode) {
-              try { await img.decode(); } catch (e) {}
-            }
-            loadedCount++;
-            const progress = Math.round((loadedCount / frameCount) * 100);
-            if (loadingText) loadingText.setAttribute('data-progress', `Loading Freshness: ${progress}%`);
-            
-            if (i === 0) render(0);
-            resolve();
-          };
-        });
-        promises.push(promise);
-        images.push(img);
+        images.push(new Image());
       }
-      await Promise.all(promises);
+
+      // Load first frame immediately
+      const firstImg = images[0];
+      firstImg.src = getFramePath(0);
+      await new Promise(resolve => {
+        firstImg.onload = resolve;
+        firstImg.onerror = resolve;
+      });
+      
+      render(0);
       heroSequence.classList.add('ready');
+      if (loadingText) loadingText.setAttribute('data-progress', '');
+
+      // Load the rest asynchronously in the background
+      for (let i = 1; i < frameCount; i++) {
+        const img = images[i];
+        img.src = getFramePath(i);
+      }
     }
 
     preloadImages();
