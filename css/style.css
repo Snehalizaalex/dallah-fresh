@@ -1562,6 +1562,11 @@ p {
   margin-bottom: 50px;
 }
 
+.footer-grid > div:first-child img {
+  margin-top: -30px !important;
+  margin-left: -35px !important;
+}
+
 .footer-brand {
   font-family: var(--font-heading);
   font-size: 1.5rem;
@@ -1986,6 +1991,16 @@ p {
     grid-template-columns: 1fr;
     gap: 30px;
   }
+
+  .footer-grid > div:first-child {
+    text-align: left !important;
+  }
+
+  .footer-grid > div:first-child img {
+    margin-left: -30px !important;
+    transform: translateX(-40px) !important;
+  }
+
 
   .footer-bottom {
     flex-direction: column;
