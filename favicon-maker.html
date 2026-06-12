@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Favicon</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; background: #f0f2f5; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { color: #333; margin-top: 0; }
+        .controls { margin-bottom: 20px; }
+        .canvas-container { position: relative; display: inline-block; border: 1px dashed #ccc; margin-top: 10px; max-width: 100%; overflow: auto; }
+        #canvas { display: block; max-width: 100%; cursor: crosshair; }
+        #cropBox { position: absolute; border: 2px dashed red; background: rgba(255,0,0,0.1); pointer-events: none; display: none; }
+        .btn { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        .btn:hover { background: #0056b3; }
+        .btn:disabled { background: #ccc; cursor: not-allowed; }
+        .instructions { background: #e9ecef; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Favicon Maker</h1>
+        <div class="instructions">
+            <p><strong>Step 1:</strong> Select the file <code>dallah logo image.jpeg</code> from your computer.</p>
+            <p><strong>Step 2:</strong> Click and drag on the image below to draw a square around the fruit icon.</p>
+            <p><strong>Step 3:</strong> Click "Download Favicon" and place the downloaded <code>favicon.png</code> in your project folder.</p>
+        </div>
+
+        <div class="controls">
+            <input type="file" id="imageLoader" accept="image/*" />
+        </div>
+
+        <div class="canvas-container" id="container">
+            <canvas id="canvas"></canvas>
+            <div id="cropBox"></div>
+        </div>
+
+        <br>
+        <button id="downloadBtn" class="btn" disabled>Download Favicon</button>
+    </div>
+
+    <script>
+        const imageLoader = document.getElementById('imageLoader');
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const cropBox = document.getElementById('cropBox');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const container = document.getElementById('container');
+
+        let img = new Image();
+        let startX, startY, currentX, currentY;
+        let isDragging = false;
+        let cropCoords = null;
+        let displayScale = 1;
+
+        imageLoader.addEventListener('change', (e) => {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                img.onload = () => {
+                    const maxWidth = container.clientWidth;
+                    displayScale = Math.min(1, maxWidth / img.width);
+                    
+                    canvas.width = img.width * displayScale;
+                    canvas.height = img.height * displayScale;
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    
+                    cropBox.style.display = 'none';
+                    downloadBtn.disabled = true;
+                    cropCoords = null;
+                }
+                img.src = event.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        });
+
+        canvas.addEventListener('mousedown', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            startX = e.clientX - rect.left;
+            startY = e.clientY - rect.top;
+            isDragging = true;
+            
+            cropBox.style.left = startX + 'px';
+            cropBox.style.top = startY + 'px';
+            cropBox.style.width = '0px';
+            cropBox.style.height = '0px';
+            cropBox.style.display = 'block';
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            const rect = canvas.getBoundingClientRect();
+            currentX = e.clientX - rect.left;
+            currentY = e.clientY - rect.top;
+
+            // Make it a perfect square
+            let width = currentX - startX;
+            let height = currentY - startY;
+            let size = Math.max(Math.abs(width), Math.abs(height));
+            
+            let finalX = width < 0 ? startX - size : startX;
+            let finalY = height < 0 ? startY - size : startY;
+
+            // Constrain to canvas
+            if (finalX < 0) finalX = 0;
+            if (finalY < 0) finalY = 0;
+            if (finalX + size > canvas.width) size = canvas.width - finalX;
+            if (finalY + size > canvas.height) size = canvas.height - finalY;
+
+            cropBox.style.left = finalX + 'px';
+            cropBox.style.top = finalY + 'px';
+            cropBox.style.width = size + 'px';
+            cropBox.style.height = size + 'px';
+
+            cropCoords = {
+                x: finalX / displayScale,
+                y: finalY / displayScale,
+                size: size / displayScale
+            };
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isDragging = false;
+            if (cropCoords && cropCoords.size > 10) {
+                downloadBtn.disabled = false;
+            }
+        });
+
+        downloadBtn.addEventListener('click', () => {
+            if (!cropCoords) return;
+
+            // Create offscreen canvas for final 512x512 image
+            const exportCanvas = document.createElement('canvas');
+            exportCanvas.width = 512;
+            exportCanvas.height = 512;
+            const exportCtx = exportCanvas.getContext('2d');
+
+            exportCtx.drawImage(
+                img,
+                cropCoords.x, cropCoords.y, cropCoords.size, cropCoords.size, // Source
+                0, 0, 512, 512 // Destination
+            );
+
+            const link = document.createElement('a');
+            link.download = 'favicon.png';
+            link.href = exportCanvas.toDataURL('image/png');
+            link.click();
+        });
+    </script>
+</body>
+</html>
